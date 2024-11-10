@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+    backend:
+      build: '.'
+      ports:
+        - 4000:8000
+      environment:
+        DB_URI: 'mongodb://mongo/alex'
+    mongo:
+        restart: always
+        ports:
+            - '27017:27017'
+        image: mongo
+        volumes:
+          - databasedata:/data/db
+
+volumes:
+  databasedata:
